@@ -1,0 +1,47 @@
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    background-color: rgb(226, 223, 220);
+}
+
+.container {
+    padding: 30px 0px;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.box {
+    background-color: rgb(214, 214, 209);
+    padding: 50px;
+    cursor: pointer;
+}
+
+.box_1 {
+    background-color: red;
+
+}
+
+.box_2 {
+    background-color: blue;
+}
+
+
+.box_3 {
+    background-color: green;
+
+}
+
+.box_4 {
+    background-color: yellow;
+
+}
+
+.Greet {
+    padding: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
