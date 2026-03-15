@@ -1,22 +1,15 @@
-let A = Number(prompt("Enter first number:"));
-let B = Number(prompt("Enter Second number:"));
-let division = () => {
-    let div = A / B
-    return div;
-}
-
-const divide = new Promise((resolve, reject) => {
-    if (B !== 0) {
-        resolve(division());
-    } else {
-        reject("Error: invalid second value");
-    }
+const boxes = document.querySelectorAll("box")
+boxes.forEach((box, index) => {
+    box.addEventListener('click', () => {
+        box.classList.add(`box_${index + 1}`);
+    });
 });
 
-divide
-    .then((result) => {
-        console.log("The division of Two number is ", result)
-    })
-    .catch((error) => {
-        console.log(error);
-    });
+const input = document.getElementById("nameInput");
+const button = document.getElementById("greetBtn");
+const greeting = document.querySelector("#greeting h2");
+
+button.addEventListener("click", () => {
+    const name = input.value;
+    greeting.textContent = `Hello , ${name}`;
+});
