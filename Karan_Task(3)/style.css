@@ -1,0 +1,31 @@
+body {
+    background-color: coral;
+}
+
+.head {
+    color: blue;
+}
+
+#bglime {
+    background-color: lime;
+}
+
+.brown {
+    color: brown;
+}
+
+#para {
+    color: green;
+}
+
+p {
+    color: antiquewhite;
+}
+
+li:nth-child(1) a {
+    background-color: yellow;
+}
+
+li:nth-child(2) a {
+    background-color: rgb(123, 123, 154);
+}
