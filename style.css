@@ -1,0 +1,100 @@
+.navbar {
+    padding: 15px 20px;
+    position: relative;
+    /* important */
+}
+
+/* Remove default list styling */
+.navbar ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    /* center menu */
+}
+
+/* Menu items */
+.menu li {
+    display: inline-block;
+    margin: 0 15px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+/* Logo - Left */
+.logo {
+    position: absolute;
+    left: 20px;
+    top: 15px;
+    font-size: 22px;
+}
+
+/* Username - Right */
+.user {
+    position: absolute;
+    right: 20px;
+    top: 15px;
+    font-size: 18px;
+    padding: 8px 5px;
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+
+
+/* container */
+
+.hero {
+    padding: 50px 20px;
+}
+
+/* Main container */
+.container {
+    width: 90%;
+    margin: auto;
+}
+
+/* Left & Right side */
+.container-left,
+.container-right {
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* Left content */
+.container-left {
+    width: 36%;
+    padding-right:12rem ;
+}
+
+.container-left h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+}
+
+.container-left p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* Button */
+.start-now {
+    padding: 12px 25px;
+    border: none;
+    background: #00ffcc;
+    color: black;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+/* Right image */
+.container-right {
+    width: 40%;
+    text-align: right;
+}
+
+.container-right img {
+    width: 100%;   /* correct way */
+    max-width: 400px;
+}
