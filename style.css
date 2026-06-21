@@ -1,0 +1,113 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    padding: 15px 20px;
+    background: #f8f8f8;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Menu */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;cursor: pointer;
+}
+
+
+/* Logo */
+.logo {
+    font-size: 22px;
+}
+
+/* User */
+.user {
+    padding: 6px 12px;
+}
+
+.user p {
+    padding: 6px 12px;
+    background: aqua;
+    border-radius: 8px;
+}
+
+.username {
+    display: flex;
+    padding: 0px 10px;
+}
+
+.btn-user {
+    border: none;
+    padding: 10px;
+    background-color: white;
+
+}
+
+.side-bar {
+    display: none;
+}
+
+.side-bar{
+    float: right;
+    height: 60vh;
+    width: 20vw;
+    background-color:blue;
+    text-align: center;
+    padding: 30px;
+}
+.menu-res {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    color: #f8f8f8;
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .menu {
+        display: none;
+    }
+
+    .username {
+        position: relative;
+    }
+
+    .btn-user {
+        display: block;
+        cursor: pointer;
+    }
+
+    .side-bar {
+        display: none;
+        position: absolute;
+        top: 50px;
+        right: 0;
+        width: 200px;
+        height: auto;
+        background: blue;
+        padding: 20px;
+    }
+
+    .username:focus-within .side-bar {
+        display: block;
+    }
+}
