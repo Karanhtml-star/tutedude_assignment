@@ -1,0 +1,179 @@
+/* Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    padding: 15px 20px;
+    background: #f8f8f8;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Menu */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu li {
+    cursor: pointer;
+}
+
+/* Logo */
+.logo {
+    font-size: 22px;
+}
+
+/* User */
+.user {
+    padding: 6px 12px;
+    background: rgb(87 233 233 / 10%);
+    border-radius: 8px;
+    color: #0ba8d7;
+}
+
+/* ================= HERO ================= */
+.hero {
+    padding: 50px 20px;
+}
+
+.container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+/* Left */
+.container-left {
+    width: 45%;
+}
+
+.container-left h1 {
+    font-size: 40px;
+    margin-bottom: 20px;
+    line-height: 3.5rem;
+    width: 77%;
+}
+
+.container-left h1 span {
+    color: #1e95c1;
+}
+
+.container-left p {
+    font-size: 18px;
+    margin-bottom: 25px;
+    line-height: 2rem;
+    color: grey;
+    word-spacing: 3px;
+}
+
+/* Button */
+.start-now {
+    padding: 12px 25px;
+    border: none;
+    background: #1e95c1;
+    cursor: pointer;
+    border-radius: 12px;
+    color: white;
+    font-weight: 700;
+}
+
+
+/* Right */
+
+.container-right {
+    text-align: center;
+}
+
+.container-right img {
+    width: 100%;
+    max-width: 500px;
+    animation:
+        counter-revolve 1s linear 0s 1 normal forwards,
+        squeezeEffect 2s ease-in-out 1s 1 normal forwards;
+    animation-iteration-count: infinite;
+}
+
+
+@keyframes counter-revolve {
+    0% {
+        transform: rotate(0deg) translateX(50px) rotate(0deg) scale(1, 1);
+    }
+
+    100% {
+        transform: rotate(360deg) translateX(50px) rotate(-360deg) scale(1, 1);
+    }
+}
+
+@keyframes squeezeEffect {
+    0% {
+        /* Retain the final position from the revolve animation while starting the squeeze */
+        transform: rotate(360deg) translateX(50px) rotate(-360deg) scale(1, 1);
+    }
+
+    50% {
+        transform: scale(0.8, 1.2);
+    }
+
+    100% {
+        /* Keep the spatial position intact, but apply the scaling adjustments */
+        transform: rotate(360deg) translateX(50px) rotate(-360deg) scale(1, 1);
+    }
+}
+
+
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 900px) {
+    .container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .container-left h1 {
+        font-size: 32px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .menu {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .container-left h1 {
+        font-size: 26px;
+    }
+
+    .container-left p {
+        font-size: 16px;
+    }
+
+    .start-now {
+        width: 100%;
+    }
+}
