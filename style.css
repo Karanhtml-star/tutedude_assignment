@@ -105,8 +105,7 @@ body {
     width: 100%;
     max-width: 500px;
     animation:
-        counter-revolve 1s linear 0s 1 normal forwards,
-        squeezeEffect 2s ease-in-out 1s 1 normal forwards;
+        counter-revolve 3s linear 0s 1;
     animation-iteration-count: infinite;
 }
 
@@ -116,23 +115,15 @@ body {
         transform: rotate(0deg) translateX(50px) rotate(0deg) scale(1, 1);
     }
 
-    100% {
-        transform: rotate(360deg) translateX(50px) rotate(-360deg) scale(1, 1);
-    }
-}
-
-@keyframes squeezeEffect {
-    0% {
-        /* Retain the final position from the revolve animation while starting the squeeze */
-        transform: rotate(360deg) translateX(50px) rotate(-360deg) scale(1, 1);
+    70% {
+        transform: rotate(252deg) translateX(50px) rotate(-252deg) scale(1, 1);
     }
 
-    50% {
-        transform: scale(0.8, 1.2);
+    85% {
+        transform: rotate(306deg) translateX(50px) rotate(-306deg) scale(0.8, 1.2);
     }
 
     100% {
-        /* Keep the spatial position intact, but apply the scaling adjustments */
         transform: rotate(360deg) translateX(50px) rotate(-360deg) scale(1, 1);
     }
 }
