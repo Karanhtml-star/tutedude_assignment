@@ -1,75 +1,63 @@
-🎨 Hero Image Animation
+# Laundry Wallah - CSS Orbit Animation
 
-This project uses CSS Keyframe Animations to create an engaging entrance effect for the hero image.
+Laundry Wallah is a responsive landing page built with HTML and CSS. The highlight of this project is a custom CSS animation that simulates an object moving in an orbital path while dynamically squashing and stretching at specific points to create a more natural and engaging motion effect.
 
-✨ Animation Sequence
+## Features
 
-The image performs two animations:
+- Responsive Landing Page
+- Modern Hero Section
+- Custom CSS Orbit Animation
+- Squash & Stretch Motion Effect
+- Flexbox Layout
+- Mobile-Friendly Design
 
-Counter Revolve Animation
-Rotates in a circular path.
-Completes one full revolution.
-Creates a dynamic entry effect.
-Squeeze Effect Animation
-Starts after the rotation finishes.
-Compresses the image horizontally and stretches it vertically.
-Returns smoothly to its original size.
+## Animation Highlight
 
-🛠️ Keyframes Explained
-1. Counter Revolve
+The washing machine image uses a custom `@keyframes` animation:
+
+```css
 @keyframes counter-revolve {
     0% {
-        transform: rotate(0deg)
-                   translateX(50px)
-                   rotate(0deg);
+        transform: rotate(0deg) translateX(50px) rotate(0deg) scale(1, 1);
+    }
+
+    85% {
+        transform: rotate(306deg) translateX(50px)
+                   rotate(-306deg) scale(0.8, 1.2);
     }
 
     100% {
-        transform: rotate(360deg)
-                   translateX(50px)
-                   rotate(-360deg);
+        transform: rotate(360deg) translateX(50px)
+                   rotate(-360deg) scale(1, 1);
     }
 }
-How it works
-rotate(360deg) moves the image in a circular path.
-translateX(50px) sets the orbit radius.
-rotate(-360deg) counteracts the rotation so the image remains upright while moving.
+```
 
-Result:
+### Concepts Demonstrated
 
-The image revolves around an invisible center point without spinning itself.
+- CSS Keyframe Animations
+- Orbital Motion using `rotate()` and `translateX()`
+- Counter-Rotation Technique
+- Squash & Stretch Animation Principles
+- CSS Transform Functions
+- Continuous Infinite Animation
 
-2. Squeeze Effect
-@keyframes squeezeEffect {
-    0% {
-        transform: scale(1, 1);
-    }
+## Technologies Used
 
-    50% {
-        transform: scale(0.8, 1.2);
-    }
+- HTML5
+- CSS3
+- Flexbox
+- CSS Animations
+- CSS Transforms
 
-    100% {
-        transform: scale(1, 1);
-    }
-}
+## Learning Outcomes
 
-How it works
+- Creating orbital movement with CSS
+- Combining multiple transforms
+- Applying squash and stretch effects
+- Building smooth, engaging UI animations
+- Responsive web design fundamentals
 
-scale(0.8, 1.2)
-Width becomes 80%.
-Height becomes 120%.
-Creates a squash-and-stretch effect inspired by animation principles.
-Returns smoothly to normal size.
+## Author
 
-Result:
-
-The image briefly "squeezes" before settling into its final position.
-
-🚀 Animation Configuration
-.container-right img {
-    animation:
-        counter-revolve 1s linear 0s 1 normal forwards,
-        squeezeEffect 2s ease-in-out 1s 1 normal forwards;
-}
-
+Karan Singh Rawat
