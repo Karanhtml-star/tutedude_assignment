@@ -1,0 +1,296 @@
+* {
+    margin: 0px;
+    padding: 0px;
+}
+
+body {
+    background-color: rgba(174, 177, 179, 0.119);
+}
+
+/* ================= NAVBAR ================= */
+.navbar {
+    padding: 15px 20px;
+    background: #bbb6b62b;
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Menu */
+.menu {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.menu li {
+    cursor: pointer;
+}
+
+/* Logo */
+.logo {
+    font-size: 22px;
+}
+
+/* User */
+.user {
+    padding: 6px 13px;
+    background: rgb(87, 239, 239);
+    border-radius: 10px 0px 0px 10px;
+}
+
+.username {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.img {
+    padding: 3px 5px;
+    background-color: rgba(255, 0, 0, 0.301);
+    border-radius: 0px 10px 10px 0px;
+}
+
+/* =================================================================== */
+/* Hero Section */
+/* =================================================================== */
+.hero-section {
+    /* margin: 40px auto; */
+    margin: 25px 10px;
+    max-width: 100vw;
+    max-height: 100vh;
+}
+
+.main {
+    display: flex;
+    justify-content: space-around;
+}
+
+.add-items {
+    border-radius: 10px;
+    background-color: rgba(190, 193, 195, 0.258);
+    padding: 2px;
+    min-height: 65vh;
+    width: 29vw;
+}
+
+.top {
+    border-radius: 10px 10px 0 0;
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.882);
+}
+
+.sub {
+    padding: 8px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cartTab {
+    display: grid;
+    grid-template-columns: 10fr 18fr 10fr;
+    text-align: center;
+}
+
+.listcart {
+    display: none;
+}
+
+.item {
+    display: grid;
+    grid-template-columns: 7fr 18fr 8fr;
+    text-align: center;
+}
+
+.img-section {
+    text-align: center;
+    height: 50px;
+}
+
+.text {
+    text-align: center;
+    padding: 15px;
+}
+
+.total {
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    padding: 12px 30px;
+    font-weight: 550;
+}
+
+.b1 {
+    font-weight: 600;
+    padding: 22px 2px;
+}
+
+.b1 p {
+    padding: 5px 0px;
+}
+
+.contact {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+h3 {
+    padding: 10px;
+}
+
+.c1,
+.c2 {
+    width: 48%;
+}
+
+.book {
+    padding: 5px;
+}
+
+.contact p {
+    padding: 2px 5px;
+    font-weight: 550;
+}
+
+.input {
+    width: 95%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+.p2 {
+    background-color: rgb(255, 255, 255);
+    padding: 12px;
+    margin: 5px;
+    border-radius: 8px;
+    font-size: 16px;
+    color: rgb(85, 84, 84);
+}
+
+.b2 {
+    background-color: rgb(253, 253, 253);
+    padding: 12px;
+    border-radius: 8px;
+}
+
+@media (max-width: 768px) {
+    .hero-section {
+        width: 90vw;
+    }
+
+    .contact {
+        flex-direction: column;
+    }
+
+    .c1,
+    .c2 {
+        width: 100%;
+    }
+}
+
+.button {
+    padding: 12px 0px;
+}
+
+.button button {
+    padding: 7px;
+    width: 25rem;
+    border-radius: 5px;
+
+}
+
+.t1 {
+    display: none;
+    color: #36fe09e7;
+    font-size: 15px;
+    font-weight: 500;
+    padding-top: 10px;
+}
+
+.t2 {
+    display: flex;
+    color: #fe0909;
+    font-size: 15px;
+    padding-top: 10px;
+}
+
+/*=====================Browser Services======================*/
+
+.img-sec {
+    display: block;
+    gap: 20px;
+    text-align: center;
+}
+
+.img1 {
+    width: 300px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.img-text {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    font-weight: 600;
+    font-size: 18px;
+    padding: 10px;
+}
+
+.img-text .price {
+    color: rgb(23, 23, 231);
+}
+
+.btn {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 15px;
+
+}
+
+.btn button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    font-weight: 600;
+    border: none;
+}
+
+.btn img {
+    padding: 5px;
+    width: 17px;
+}
+
+.btn-l {
+    border-right: none;
+    border-radius: 10px 0px 0px 10px;
+    color: rgb(223, 30, 30);
+    background-color: rgb(223, 30, 30, 0.08);
+}
+
+.btn-r {
+    border-left: none;
+    border-radius: 0px 10px 10px 0px;
+    color: #08ac08;
+    background-color: rgb(8, 172, 8, 0.08);
+}
+
+.t3 {
+    display: flex;
+    color: #0963fee7;
+    font-size: 15px;
+    padding-top: 10px;align-items: center;
+    justify-content: center;
+}

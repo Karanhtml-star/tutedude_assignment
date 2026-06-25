@@ -1,11 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculating Compound Intrest</title>
+    <title>Service Booking Web App</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo"><b>LOGO</b></div>
+
+            <ul class="menu">
+                <li>Home</li>
+                <li>About</li>
+                <li>Services</li>
+                <li>Contact</li>
+            </ul>
+
+            <div class="username">
+                <section class="user"> Username </section>
+                <span class="img">
+                    <img width="20px" src="logOut.svg" alt="">
+                </span>
+
+            </div>
+        </div>
+    </nav>
+    <!-- ====================================================== -->
+    <!-- hero Section -->
+    <!-- ====================================================== -->
+    <!-- =====================Display Added Items====================  -->
+    <div class="hero-section">
+        <div class="main">
+            <div class="add-items">
+
+                <div class="top">Added Items</div>
+
+                <div class="pricing">
+                    <section class="cartTab">
+                        <p>S.No. </p>
+                        <p>Service Name:</p>
+                        <p>Price:</p>
+                    </section>
+                    <section class="p2">
+                        <section class="listcart">
+                            <div class="item">
+                                <div class="s.no.">
+                                    <!-- 1 -->
+                                </div>
+                                <div class="name">
+                                    <!-- Dry Cleaning -->
+                                </div>
+                                <div class="totalPrice">
+                                    <!-- ₹200.00 -->
+                                </div>
+                            </div>
+                        </section>
+                        <section class="no-item">
+                            <div class="img-section">
+                                <img src="i.svg" alt="">
+                            </div>
+
+                            <div class="text">
+                                <h3>No Items Added</h3>
+                                <p>Add items to the card from the service bar </p>
+                            </div>
+                        </section>
+                    </section>
+                    <div class="total">
+                        <p>Total Amount</p>
+                        <p id="totalPrice">
+                            ₹0.00
+                        </p>
+                    </div>
+                </div>
+
+
+                <div class="book">
+                    <section class="b2">
+                        <section class="b1">
+                            <h3>Book Now</h3>
+                            <p>FullName</p>
+                            <input class="input" type="text" placeholder="Enter your full name">
+                        </section>
+
+                        <div class="contact">
+                            <section class="c1">
+                                <p>Email ID</p>
+                                <input class="input" type="email" placeholder="e.g. karan@example.com">
+                            </section>
+
+                            <section class="c2">
+                                <p>Phone-Number</p>
+                                <input class="input" type="number" placeholder="Enter your phone number">
+                            </section>
+                        </div>
+                        <section class="button">
+                            <button id="Book-now">
+                                Book Now
+                            </button>
+                            <section class="t1">
+                                <img src="i-green.svg" alt="" width="15px">
+                                <p>Add to the items in the cart to book</p>
+                            </section>
+                            <section class="t2">
+                                <img src="i-red.svg" alt="" width="15px">
+                                <p>Add to the items in the cart to book</p>
+                            </section>
+                            <p></p>
+                        </section>
+                    </section>
+                </div>
+
+            </div>
+
+            <!-- =====================Browser Services====================== -->
+
+            <div class="browser-service">
+                <section class="text1">
+                    <p class="top">Browser Your Services </p>
+                    <p class="sub">Click on the add to cart button to add the services
+                        to your cart or press skip </p>
+                </section>
+
+                <section class="img-sec">
+                    <div class="image-slider">
+                        <img id="sliderImage" class="img1" src="img.jpg" alt="">
+                        <div class="img-text">
+                            <h3>Dry Cleaning </h3>
+                            <h3 class="price">₹200.00</h3>
+                        </div>
+                    </div>
+                    <div class="btn">
+                        <button class="btn-l" id="next">
+                            <p>Skip</p><img src="remove.svg" alt="">
+                        </button>
+                        <button class="btn-r" id="add-to-cart">
+                            <p>Add item </p><img src="add-circle.svg" alt="">
+                        </button>
+                    </div>
+                    <section class="t3">
+                        <img src="i-blue.svg" width="15px" alt="">
+                        <p>Add the items to the cart and book now</p>
+                    </section>
+                </section>
+            </div>
+        </div>
+    </div>
     <script src="script.js"></script>
 </body>
+
 </html>
