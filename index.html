@@ -1,11 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculating Compound Intrest</title>
+    <title>Tailwind Hero Landing page </title>
+    <link href="./output.css" rel="stylesheet">
 </head>
+
 <body>
-    <script src="script.js"></script>
+    <nav class="w-full p-5 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div>Project</div>
+            <div class="flex items-center">
+                <ul class="flex gap-8 px-5">
+                    <li>Product</li>
+                    <li>Solution</li>
+                    <li>Resources</li>
+                    <li>Pricing</li>
+                    <li class="font-semibold">Log in</li>
+                </ul>
+                <button class=" text-white bg-black p-2">Get AI free</button>
+            </div>
+        </div>
+    </nav>
+
+    <section>
+        <div class="relative">
+            <div class="text-center">
+                <div class="text-5xl font-semibold">
+                    <p>Write, Plan, Share</p>
+                    <p>With AI at your Side</p>
+                </div>
+                <p class="py-7">It is the connected workspace Where better,faster work happens, Now with AI.</p>
+                <div class="text-white align-middle">
+                    <button class=" bg-black p-3">Get AI Free ----> </button>
+                    <button class="bg-blue-700 p-3">Request a demo</button>
+                </div>
+                <div class="py-7 flex justify-center">
+                    <img class="w-lg" src="dashbord-img.jpg" alt="">
+                </div>
+            </div>
+
+
+            <div class="w-2xs py-3 absolute z-10 shadow-lg left-14 bottom-47">
+                <img class="w-10" src="task-list.png" alt="">
+                <p class="font-semibold">Task:</p>
+                <p class="text-gray-400">12 task completed today</p>
+            </div>
+
+
+            <div class="w-2xs py-3 absolute z-10 right-0 bottom-12">
+                <svg xmlns=" http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="text-green-400">
+                    <path d="M382-240 154-468l57-57 171 171 367-367 57 57-424 424Z" />
+                </svg>
+                <p class="font-semibold">Status:</p>
+                <p class="text-green-400">On Track</p>
+            </div>
+
+
+            <div class="w-2xs py-3 absolute z-10 right-12 bottom-45">
+                <p class="font-semibold">Team Activity</p>
+                <div class="flex">
+                    <img class="w-10" src="team.avif" alt="">
+                    <p class="text-gray-400">+5 Online</p>
+                </div>
+            </div>
+            <div class="fixed bottom-6 right-6 z-50 bg-black p-3 ">
+                <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px"
+                    fill="white">
+                    <path
+                        d="M240-400h320v-80H240v80Zm0-120h480v-80H240v80Zm0-120h480v-80H240v80ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z" />
+                </svg>
+            </div>
+        </div>
+    </section>
 </body>
+
 </html>
