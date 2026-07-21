@@ -1,11 +1,96 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculating Compound Intrest</title>
+    <title>Tailwind Hero Landing page </title>
+    <link href="./output.css" rel="stylesheet">
 </head>
+
 <body>
-    <script src="script.js"></script>
+    <nav class="w-full p-5 sticky top-0 z-50 bg-white">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <div class="flex justify-center items-center">
+                <img class="w-7" src="startup.png" alt="">
+                <p>AppName</p>
+            </div>
+            <div class="flex items-center text-md">
+                <ul class="gap-8 px-5 hidden md:flex">
+                    <li>Features</li>
+                    <li>Pricing</li>
+                    <li>About</li>
+                    <li>Contact</li>
+                </ul>
+                <button class=" text-white bg-blue-800 rounded-md p-2 hidden md:flex">Get Started</button>
+                <img class="block md:hidden w-7" src="menu.png" alt="">
+            </div>
+        </div>
+    </nav>
+
+    <section class="min-h-screen flex items-center bg-gradient-to-br from-blue-600 to-fuchsia-700 px-6 py-12 md:py-20">
+        <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-12 w-full">
+
+            <!-- Text Column -->
+            <div
+                class="text-white text-center md:text-left w-full md:w-[45%] flex flex-col items-center md:items-start">
+                <!-- Scaled typography down for mobile screens -->
+                <h1 class="font-bold text-4xl sm:text-5xl lg:text-6xl tracking-wide leading-tight">
+                    Build Amazing Products Faster
+                </h1>
+                <p class="py-6 text-lg sm:text-xl opacity-90 max-w-xl">
+                    The all-in-one platform to collaborate, build, and ship products that users love.
+                </p>
+                <!-- Buttons stack on mobile, go inline on desktop -->
+                <div class="flex flex-col sm:flex-row gap-4 w-full sm:w-auto">
+                    <button
+                        class="bg-white text-blue-800 font-semibold px-6 py-3 rounded-md hover:bg-blue-50 transition shadow-lg text-center">
+                        Start Free Trial
+                    </button>
+                    <button
+                        class="border-white border-2 text-white font-semibold px-6 py-3 rounded-md hover:bg-white/10 transition text-center">
+                        Watch Demo
+                    </button>
+                </div>
+            </div>
+
+            <!-- Image Column -->
+            <div class="w-full md:w-[50%] flex justify-center">
+                <img class="rounded-xl shadow-2xl w-full max-w-xl md:max-w-none object-cover aspect-video md:aspect-auto"
+                    src="https://images.stockcake.com/public/8/9/0/890a7479-4632-4b65-af7c-6665927511af_large/office-work-environment-stockcake.jpg"
+                    alt="Office work environment">
+            </div>
+
+        </div>
+    </section>
+
+
+    <section class="my-5">
+        <h1 class="text-center font-semibold text-3xl">Powerful Features</h1>
+
+        <!-- FIX: Added 'grid' and 'grid-cols-1' for mobile fallback -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 my-8">
+
+            <div class="flex flex-col items-center text-center p-4">
+                <img class="w-8 h-8 mb-2" src="thunderbolt.png" alt="">
+                <h2 class="font-bold text-xl">Lightning Fast</h2>
+                <p class="text-gray-600 text-sm">Optimize for Speed and Performance</p>
+            </div>
+
+            <div class="flex flex-col items-center text-center p-4">
+                <img class="w-8 h-8 mb-2" src="lock.png" alt="">
+                <h2 class="font-bold text-xl">Secure</h2>
+                <p class="text-gray-600 text-sm">Enterprise-grade security build-in.</p>
+            </div>
+
+            <div class="flex flex-col items-center text-center p-4">
+                <img class="w-8 h-8 mb-2" src="statistics.png" alt="">
+                <h2 class="font-bold text-xl">Analytics</h2>
+                <p class="text-gray-600 text-sm">Real time insights and reports</p>
+            </div>
+
+        </div>
+    </section>
 </body>
+
 </html>
