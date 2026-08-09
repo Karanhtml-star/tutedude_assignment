@@ -5,7 +5,7 @@ function Login() {
   return (
     <section className="min-h-[80vh] bg-gray-100 flex items-center justify-center px-6">
 
-      <div className="bg-white w-full max-w-md p-8 rounded-xl shadow-lg">
+      <div className="bg-white w-full max-w-md p-8 rounded-xl">
 
         <h1 className="text-3xl font-bold text-center mb-6">
           Login
@@ -46,15 +46,7 @@ function Login() {
 
         </form>
 
-        <p className="text-center mt-6 text-gray-600">
-          Don't have an account?{" "}
-          <Link
-            to="/signup"
-            className="text-blue-600 font-semibold hover:underline"
-          >
-            Sign Up
-          </Link>
-        </p>
+        
 
       </div>
 
