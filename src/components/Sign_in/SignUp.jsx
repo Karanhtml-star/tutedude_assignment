@@ -58,15 +58,7 @@ function SignUp() {
 
                 </form>
 
-                <p className="text-center mt-6 text-gray-600">
-                    Already have an account?{" "}
-                    <Link
-                        to="/login"
-                        className="text-blue-600 font-semibold hover:underline"
-                    >
-                        Login
-                    </Link>
-                </p>
+                
 
             </div>
 
