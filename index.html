@@ -1,11 +1,603 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculating Compound Intrest</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Greenwood Public Library</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: '#FAF8F2',
+            ink: '#201F1C',
+            forest: {
+              50: '#EEF2ED',
+              100: '#DCE5DA',
+              400: '#5C7A5F',
+              600: '#2E4131',
+              700: '#243428',
+              900: '#182319',
+            },
+            brass: {
+              50: '#F8F1E4',
+              300: '#D9B87C',
+              500: '#AD8342',
+              600: '#8E6A34',
+            },
+            clay: '#C1785A',
+          },
+          fontFamily: {
+            serif: ['Georgia', 'Cambria', '"Times New Roman"', 'serif'],
+            sans: ['Helvetica', 'Arial', 'ui-sans-serif', 'sans-serif'],
+          },
+          keyframes: {
+            'fade-up': {
+              '0%': { opacity: '0', transform: 'translateY(18px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' },
+            },
+            'fade-in': {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            'grow-line': {
+              '0%': { width: '0%' },
+              '100%': { width: '100%' },
+            },
+            'float-slow': {
+              '0%, 100%': { transform: 'translateY(0px)' },
+              '50%': { transform: 'translateY(-10px)' },
+            },
+          },
+          animation: {
+            'fade-up': 'fade-up 0.8s cubic-bezier(0.16,1,0.3,1) forwards',
+            'fade-in': 'fade-in 1s ease forwards',
+            'grow-line': 'grow-line 1.4s cubic-bezier(0.16,1,0.3,1) forwards',
+            'float-slow': 'float-slow 6s ease-in-out infinite',
+          },
+        },
+      },
+    };
+  </script>
 </head>
-<body>
-    <script src="script.js"></script>
+
+<body class="bg-paper text-ink font-sans antialiased">
+
+  <!-- ============ NAVIGATION ============ -->
+
+  <header class="sticky top-0 z-50 backdrop-blur-md bg-paper/80 border-b border-ink/10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 h-20 flex items-center justify-between">
+      <a href="#top" class="flex items-baseline gap-2 group">
+        <span class="font-serif text-2xl tracking-tight">Greenwood</span>
+        <span
+          class="text-[10px] font-sans tracking-wide text-forest-600 border border-forest-600/30 rounded-full px-2 py-0.5 group-hover:bg-forest-600 group-hover:text-paper transition-colors duration-300">Open
+          Sat</span>
+      </a>
+
+      <nav class="hidden md:flex items-center gap-10 text-sm text-ink/80">
+        <a href="#sections" class="nav-link hover:text-ink transition-colors">Sections</a>
+        <a href="#gallery" class="nav-link hover:text-ink transition-colors">Gallery</a>
+        <a href="#membership" class="nav-link hover:text-ink transition-colors">Membership</a>
+        <a href="#events" class="nav-link hover:text-ink transition-colors">Events</a>
+      </nav>
+
+      <div class="flex items-center gap-3">
+        <a href="#contact"
+          class="hidden sm:inline-flex items-center
+          rounded-full border border-ink px-5 py-2 text-sm transition-colors duration-300 hover:bg-ink hover:text-paper">
+          Visit Us
+        </a>
+        <button id="menuBtn" class="md:hidden w-9 h-9 flex flex-col items-center justify-center gap-1.5"
+          aria-label="Toggle menu">
+          <span class="block w-5 h-px bg-ink"></span>
+          <span class="block w-5 h-px bg-ink"></span>
+        </button>
+      </div>
+    </div>
+
+    <div id="mobileMenu" class="md:hidden hidden border-t border-ink/10 bg-paper">
+      <div class="px-6 py-4 flex flex-col gap-4 text-sm">
+        <a href="#sections" class="py-1">Sections</a>
+        <a href="#gallery" class="py-1">Gallery</a>
+        <a href="#membership" class="py-1">Membership</a>
+        <a href="#events" class="py-1">Events</a>
+        <a href="#contact" class="py-1 font-medium">Visit Us</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section id="top" class="max-w-7xl mx-auto px-6 lg:px-10 py-10">
+    <div class="flex flex-col sm:flex-row items-start">
+      <!-- Hero Text -->
+      <div class="">
+        <h1 class="font-serif text-3xl sm:text-6xl lg:text-7xl leading-tight">
+          Your Neighbourhood Library.
+        </h1>
+
+        <p class="mt-6 text-ink/60 max-w-xl leading-relaxed">
+          Thousands of books, quiet reading rooms, community events
+          and free Wi-Fi — serving Greenwood since 1983.
+        </p>
+        <div class="mt-9 flex flex-wrap gap-4">
+          <a href="#sections" class="bg-ink text-paper rounded-full px-7 py-3 text-sm
+                  hover:bg-forest-600">
+            Explore Collection
+          </a>
+          <a href="#membership" class="border border-ink rounded-full px-7 py-3 text-sm
+                  hover:bg-ink hover:text-paper">
+            Join Free
+          </a>
+
+        </div>
+      </div>
+
+
+      <!-- Hero Image -->
+      <div class="w-full lg:w-[22%] sm:max-w-[22rem] h-10"></div>
+        <div class="aspect-[7/5] rounded-2xl overflow-hidden">
+          <img
+            src="https://images.unsplash.com/photo-1521587760476-6c12a4b040da?fm=jpg&q=60&w=3000&auto=format&fit=crop"
+            alt="Greenwood reading room" class=" hover:scale-105 transition-transform duration-700">
+
+        </div>
+      </div>
+    </div>
+
+
+    <!-- Statistics -->
+    <div class="mt-20 grid grid-cols-2 sm:grid-cols-4 gap-8 border-t border-ink/10">
+
+      <div>
+        <p class="font-serif text-3xl">12,000+</p>
+        <p class="text-xs text-ink/50 mt-1">Books & periodicals</p>
+      </div>
+
+      <div>
+        <p class="font-serif text-3xl">40+</p>
+        <p class="text-xs text-ink/50 mt-1">Years serving Greenwood</p>
+      </div>
+
+      <div>
+        <p class="font-serif text-3xl text-green-800">Free</p>
+        <p class="text-xs text-ink/50 mt-1">Wi-Fi throughout</p>
+      </div>
+
+      <div>
+        <p class="font-serif text-3xl">6</p>
+        <p class="text-xs text-ink/50 mt-1">Distinct sections</p>
+      </div>
+
+    </div>
+
+  </section>
+  <!-- ============ SECTIONS GRID ============ -->
+  <section id="sections" class="max-w-7xl mx-auto px-6 lg:px-10 py-20 border-t border-ink/10">
+    <div class="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-4 mb-12 reveal">
+      <h2 class="font-serif font-light text-4xl sm:text-5xl max-w-md">Six collections, one card catalog</h2>
+      <p class="text-ink/50 max-w-sm text-sm leading-relaxed">Every section keeps its own reading nook, its own hours of
+        quiet, and its own librarian on call.</p>
+    </div>
+
+    <div class="grid sm:grid-cols-2 gap-px bg-ink/10 rounded-2xl overflow-hidden reveal" style="animation-delay:.1s">
+      <div class="group bg-paper hover:bg-emerald-50 transition-colors duration-500 p-8">
+        <p class="text-xs text-ink/40 mb-6">01 &middot; Ground floor</p>
+        <h3 class="font-serif text-2xl group-hover:text-emerald-800 transition-colors duration-500">Fiction &amp;
+          Literature</h3>
+        <p class="text-sm text-ink/50 mt-3 group-hover:text-emerald-700/70 transition-colors duration-500">Novels, short
+          stories and poetry, shelved by mood as much as by author.</p>
+      </div>
+      <div class="group bg-paper hover:bg-amber-50 transition-colors duration-500 p-8">
+        <p class="text-xs text-ink/40 mb-6">02 &middot; Ground floor</p>
+        <h3 class="font-serif text-2xl group-hover:text-amber-800 transition-colors duration-500">Children's Corner</h3>
+        <p class="text-sm text-ink/50 mt-3 group-hover:text-amber-700/70 transition-colors duration-500">Low shelves,
+          floor cushions, and a Saturday storytime at eleven.</p>
+      </div>
+      <div class="group bg-paper hover:bg-sky-50 transition-colors duration-500 p-8">
+        <p class="text-xs text-ink/40 mb-6">03 &middot; First floor</p>
+        <h3 class="font-serif text-2xl group-hover:text-sky-800 transition-colors duration-500">Science &amp; Nature
+        </h3>
+        <p class="text-sm text-ink/50 mt-3 group-hover:text-sky-700/70 transition-colors duration-500">From field guides
+          to journal archives, kept beside the courtyard windows.</p>
+      </div>
+      <div class="group bg-paper hover:bg-rose-50 transition-colors duration-500 p-8">
+        <p class="text-xs text-ink/40 mb-6">04 &middot; First floor</p>
+        <h3 class="font-serif text-2xl group-hover:text-rose-800 transition-colors duration-500">History &amp; Biography
+        </h3>
+        <p class="text-sm text-ink/50 mt-3 group-hover:text-rose-700/70 transition-colors duration-500">Local archives
+          sit alongside a growing shelf of oral histories.</p>
+      </div>
+      <div class="group bg-paper hover:bg-violet-50 transition-colors duration-500 p-8">
+        <p class="text-xs text-ink/40 mb-6">05 &middot; Second floor</p>
+        <h3 class="font-serif text-2xl group-hover:text-violet-800 transition-colors duration-500">Arts &amp; Design
+        </h3>
+        <p class="text-sm text-ink/50 mt-3 group-hover:text-violet-700/70 transition-colors duration-500">Oversized
+          plates and monographs, best viewed at the drafting tables.</p>
+      </div>
+      <div class="group bg-paper hover:bg-stone-100 transition-colors duration-500 p-8">
+        <p class="text-xs text-ink/40 mb-6">06 &middot; Second floor</p>
+        <h3 class="font-serif text-2xl group-hover:text-stone-700 transition-colors duration-500">Reference &amp; Study
+        </h3>
+        <p class="text-sm text-ink/50 mt-3 group-hover:text-stone-600/70 transition-colors duration-500">Silent desks,
+          encyclopedias, and the microfilm reader nobody else wants.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ GALLERY ============ -->
+  <section id="gallery" class="max-w-7xl mx-auto px-6 lg:px-10 py-20 border-t border-ink/10">
+    <h2 class="font-serif font-light text-4xl sm:text-5xl mb-12 reveal">Inside the building</h2>
+
+    <div class="grid sm:grid-cols-2 gap-6">
+      <div class="group relative rounded-lg overflow-hidden reveal">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img
+            src="https://media.istockphoto.com/id/505551939/photo/library.jpg?s=612x612&w=0&k=20&c=lGwjpaVR2__plgaEeRiLZ0n1up16Zm3PW6zlR4paabI="
+            alt="Main reading room"
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+        </div>
+        <div
+          class="absolute bottom-0 left-0 right-0 p-5 flex items-center justify-between bg-gradient-to-t from-ink/60 to-transparent">
+          <h3 class="font-serif text-paper text-lg">Main Reading Room</h3>
+          <span class="text-[11px] text-paper/90 bg-paper/15 backdrop-blur-sm rounded-full px-3 py-1">Ground
+            floor</span>
+        </div>
+      </div>
+
+      <div class="group relative rounded-lg overflow-hidden reveal" style="animation-delay:.08s">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img src="https://thumbs.dreamstime.com/b/modern-library-7381643.jpg" alt="Garden courtyard"
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+        </div>
+        <div
+          class="absolute bottom-0 left-0 right-0 p-5 flex items-center justify-between bg-gradient-to-t from-ink/60 to-transparent">
+          <h3 class="font-serif text-paper text-lg">Fiction Collection</h3>
+          <span class="text-[11px] text-paper/90 bg-paper/15 backdrop-blur-sm rounded-full px-3 py-1">Level 1</span>
+        </div>
+      </div>
+
+      <div class="group relative rounded-lg overflow-hidden reveal" style="animation-delay:.16s">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSkVm91R44y06W11mBs9m4-UTICMEkeGxdzH1fLy7NCbg&s=10"
+            alt="Book stacks"
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+        </div>
+        <div
+          class="absolute bottom-0 left-0 right-0 p-5 flex items-center justify-between bg-gradient-to-t from-ink/60 to-transparent">
+          <h3 class="font-serif text-paper text-lg">Archive Wing</h3>
+          <span class="text-[11px] text-paper/90 bg-paper/15 backdrop-blur-sm rounded-full px-3 py-1">Second
+            floor</span>
+        </div>
+      </div>
+
+      <div class="group relative rounded-lg overflow-hidden reveal" style="animation-delay:.24s">
+        <div class="aspect-[4/3] overflow-hidden">
+          <img
+            src="https://thumbs.dreamstime.com/b/empty-computer-room-school-library-modern-computers-stand-wooden-table-151565943.jpg"
+            alt="Study desks"
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+        </div>
+        <div
+          class="absolute bottom-0 left-0 right-0 p-5 flex items-center justify-between bg-gradient-to-t from-ink/60 to-transparent">
+          <h3 class="font-serif text-paper text-lg">Digital Media lab</h3>
+          <span class="text-[11px] text-paper/90 bg-paper/15 backdrop-blur-sm rounded-full px-3 py-1">First floor</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ VALUES: BENTO GRID ============ -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-20 border-t border-ink/10">
+    <h2 class="font-serif font-light text-4xl sm:text-5xl mb-12 reveal">Why Greenwood exists</h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 gap-5 auto-rows-[180px]">
+      <div
+        class="reveal sm:col-span-2 lg:col-span-2 row-span-2 rounded-2xl bg-slate-50 hover:bg-slate-100 transition-colors duration-500 p-8 flex flex-col justify-end">
+        <h3 class="font-serif text-2xl mb-3">About the library</h3>
+        <p class="text-sm text-ink/60 leading-relaxed max-w-sm">Greenwood opened in 1984 as a single reading room above
+          the old post office.
+          Today it holds six collections and stays open seven days a week — every card is free, every visitor welcome.
+        </p>
+      </div>
+
+      <div
+        class="reveal rounded-2xl bg-emerald-50 hover:bg-emerald-100 transition-colors duration-500 p-6 flex flex-col justify-end"
+        style="animation-delay:.06s">
+        <p class="font-serif text-2xl">Community</p>
+        <p class="text-xs text-ink/50 mt-1">Run in partnership with local schools</p>
+      </div>
+
+      <div
+        class="reveal rounded-2xl bg-amber-50 hover:bg-amber-100 transition-colors duration-500 p-6 flex flex-col justify-end"
+        style="animation-delay:.12s">
+        <p class="font-serif text-2xl">40+ years</p>
+        <p class="text-xs text-ink/50 mt-1">Continuously open since 1984</p>
+      </div>
+
+      <div
+        class="reveal rounded-2xl bg-rose-50 hover:bg-rose-100 transition-colors duration-500 p-6 flex flex-col justify-end"
+        style="animation-delay:.18s">
+        <p class="font-serif text-2xl">Events</p>
+        <p class="text-xs text-ink/50 mt-1">Talks, workshops and storytime, weekly</p>
+      </div>
+
+      <div
+        class="reveal rounded-2xl bg-violet-50 hover:bg-violet-100 transition-colors duration-500 p-6 flex flex-col justify-end"
+        style="animation-delay:.24s">
+        <p class="font-serif text-2xl">Digital</p>
+        <p class="text-xs text-ink/50 mt-1">E‑books and journal archives, on any card</p>
+      </div>
+
+      <div
+        class="reveal rounded-2xl bg-zinc-100 hover:bg-zinc-200 transition-colors duration-500 p-6 flex flex-col justify-end"
+        style="animation-delay:.3s">
+        <p class="font-serif text-2xl">Access</p>
+        <p class="text-xs text-ink/50 mt-1">Step‑free throughout, quiet hours daily</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ ABOUT: TEXT COLUMNS ============ -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-20 border-t border-ink/10">
+    <h2 class="font-serif font-light text-4xl sm:text-5xl mb-10 max-w-xl reveal">A library that still believes in
+      browsing</h2>
+    <div class="columns-1 sm:columns-2 gap-10 text-ink/65 leading-relaxed text-[15px] reveal"
+      style="animation-delay:.1s">
+      <p class="mb-5">Greenwood was built on the idea that a library is a place first, and a
+        collection second. The building keeps its original oak shelving and its tall
+        south-facing windows, restored rather than replaced when the roof was rebuilt
+        in 2009.</p>
+      <p class="mb-5">Every section is arranged for browsing rather than searching — spines
+        face out, staff picks sit at eye level, and nothing is filed so precisely that
+        a visitor can't wander into something unexpected.</p>
+      <p class="mb-5">The reading rooms stay quiet by design: phones are asked to stay in
+        pockets, and the loudest sound most afternoons is the courtyard fountain
+        through the open doors.</p>
+      <p>Membership has stayed free since the doors opened in 1984, funded by the
+        township and a small endowment left by the library's first head librarian,
+        Eleanor Voss.</p>
+    </div>
+  </section>
+
+  <!-- ============ MEMBERSHIP ============ -->
+  <section id="membership" class="max-w-7xl mx-auto px-6 lg:px-10 py-20 border-t border-ink/10">
+    <h2 class="font-serif font-light text-4xl sm:text-5xl mb-12 reveal">Membership</h2>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="reveal rounded-2xl bg-forest-600 text-paper p-8 flex flex-col justify-between">
+        <div>
+          <p class="text-xs text-paper/60 mb-4">Why join</p>
+          <p class="font-serif text-2xl leading-snug">Every membership is free — the tiers below just change how much
+            you can borrow at once.</p>
+        </div>
+        <p class="text-xs text-paper/50 mt-8">No credit card, no fees, ever.</p>
+      </div>
+
+      <div class="reveal rounded-2xl border border-ink/10 overflow-hidden flex flex-col" style="animation-delay:.06s">
+        <div class="h-36 overflow-hidden">
+          <img
+            src="https://img.magnific.com/free-photo/people-library-reading-club-learning-from-books_23-2150293581.jpg?semt=ais_hybrid&w=740&q=80"
+            alt="Basic membership"
+            class="w-full h-full object-cover brightness-95 transition-transform duration-500 hover:scale-105" />
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <h3 class="font-serif text-xl">Basic</h3>
+          <p class="text-3xl font-serif mt-2">Free</p>
+          <ul class="text-sm text-ink/60 mt-4 space-y-2 flex-1">
+            <li>3 items at a time</li>
+            <li>2 week loan period</li>
+            <li>In‑library Wi‑Fi</li>
+          </ul>
+          <a href="#contact"
+            class="mt-6 inline-flex justify-center rounded-full border border-ink px-5 py-2.5 text-sm transition-colors duration-300 hover:bg-ink hover:text-paper">Get
+            card</a>
+        </div>
+      </div>
+
+      <div class="reveal relative rounded-2xl border border-brass-500 overflow-hidden flex flex-col"
+        style="animation-delay:.12s">
+        <span
+          class="absolute top-4 right-4 z-10 text-[11px] bg-brass-500 text-paper rounded-full px-3 py-1">Popular</span>
+        <div class="h-36 overflow-hidden">
+          <img
+            src="https://images.pexels.com/photos/28124384/pexels-photo-28124384/free-photo-of-a-book-on-a-bed-with-sunlight-shining-through-it.jpeg?cs=tinysrgb&dpr=1&w=500"
+            alt="Student membership"
+            class="w-full h-full object-cover brightness-95 transition-transform duration-500 hover:scale-105" />
+        </div>
+        <div class="p-6 flex flex-col flex-1 bg-brass-50/40">
+          <h3 class="font-serif text-xl">Student</h3>
+          <p class="text-3xl font-serif mt-2">Free</p>
+          <ul class="text-sm text-ink/60 mt-4 space-y-2 flex-1">
+            <li>8 items at a time</li>
+            <li>4 week loan period</li>
+            <li>Reserved study desk</li>
+          </ul>
+          <a href="#contact"
+            class="mt-6 inline-flex justify-center rounded-full bg-brass-500 text-paper px-5 py-2.5 text-sm transition-colors duration-300 hover:bg-brass-600">Get
+            card</a>
+        </div>
+      </div>
+
+      <div class="reveal rounded-2xl border border-ink/10 overflow-hidden flex flex-col" style="animation-delay:.18s">
+        <div class="h-36 overflow-hidden">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0PVQbojYoM590kTH15oSZ8GcFil3ySGmyYOdRhCw8brH1V653lUHuao3Y&s=10"
+            alt="Family membership"
+            class="w-full h-full object-cover brightness-95 transition-transform duration-500 hover:scale-105" />
+        </div>
+        <div class="p-6 flex flex-col flex-1">
+          <h3 class="font-serif text-xl">Family</h3>
+          <p class="text-3xl font-serif mt-2">Free</p>
+          <ul class="text-sm text-ink/60 mt-4 space-y-2 flex-1">
+            <li>15 items at a time</li>
+            <li>4 week loan period</li>
+            <li>Children's storytime priority</li>
+          </ul>
+          <a href="#contact"
+            class="mt-6 inline-flex justify-center rounded-full border border-ink px-5 py-2.5 text-sm transition-colors duration-300 hover:bg-ink hover:text-paper">Get
+            card</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ TESTIMONIAL ============ -->
+  <section class="max-w-7xl mx-auto px-6 lg:px-10 py-20 border-t border-ink/10">
+    <div class="max-w-2xl mx-auto text-center reveal">
+      <img src="https://picsum.photos/seed/greenwood-member/160/160" alt="Portrait of a Greenwood member"
+        class="w-16 h-16 rounded-full mx-auto object-cover grayscale hover:grayscale-0 transition-all duration-500" />
+      <p class="font-serif text-2xl sm:text-3xl leading-snug mt-6 text-ink/90">
+        "I moved my whole afternoon routine here — the quiet is different from a
+        coffee shop's quiet. It's the kind that lets you finish a chapter."
+      </p>
+      <p class="text-sm text-ink/50 mt-5">Priya Nandakumar, member since 2019</p>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT CTA ============ -->
+  <section id="contact" class="max-w-7xl mx-auto px-6 lg:px-10 py-10">
+    <div class="reveal rounded-3xl bg-emerald-50 px-8 sm:px-14 py-14 grid lg:grid-cols-2 gap-10 items-center">
+      <div>
+        <p class="text-forest-600 text-sm mb-4">Find us</p>
+        <h2 class="font-serif font-light text-3xl sm:text-4xl leading-snug">
+          118 Willow Street,<br />Greenwood, ON L4B 2K9
+        </h2>
+        <p class="text-sm text-ink/55 mt-5 leading-relaxed">
+          Monday–Friday, 9am–8pm<br />
+          Saturday, 10am–5pm &middot; Sunday, closed
+        </p>
+      </div>
+      <div class="flex flex-wrap gap-4 lg:justify-end">
+        <a href="https://maps.google.com" target="_blank" rel="noopener"
+          class="inline-flex items-center rounded-full bg-ink text-paper px-7 py-3 text-sm transition-transform duration-300 hover:scale-[1.03]">Get
+          Directions</a>
+        <a href="mailto:hello@greenwoodlibrary.org"
+          class="inline-flex items-center rounded-full border border-ink px-7 py-3 text-sm transition-colors duration-300 hover:bg-ink hover:text-paper">Email
+          Us</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ EVENTS ============ -->
+  <section id="events" class="max-w-7xl mx-auto px-6 lg:px-10 py-20 border-t border-ink/10">
+    <h2 class="font-serif font-light text-4xl sm:text-5xl mb-12 reveal">Upcoming events</h2>
+
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <a href="#" class="reveal group block">
+        <div class="rounded-lg overflow-hidden aspect-[3/4]">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTHmOEkeWZaSqNjaQUe-rwgwyqI9uHj4KpUPuzxP1I7ng&s=10"
+            alt="Poetry reading event"
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+        </div>
+        <h3 class="font-serif text-lg mt-4 group-hover:text-forest-600 transition-colors">Autumn Poetry Reading</h3>
+        <p class="text-xs text-ink/45 mt-1">September 12</p>
+      </a>
+
+      <a href="#" class="reveal group block" style="animation-delay:.06s">
+        <div class="rounded-lg overflow-hidden aspect-[3/4]">
+          <img src="https://i.pinimg.com/236x/32/60/35/32603588f62a98cc93e57f7d75b8d492.jpg?nii=t"
+            alt="Children's storytime"
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+        </div>
+        <h3 class="font-serif text-lg mt-4 group-hover:text-forest-600 transition-colors">Saturday Storytime</h3>
+        <p class="text-xs text-ink/45 mt-1">Every Saturday, 11am</p>
+      </a>
+
+      <a href="#" class="reveal group block" style="animation-delay:.12s">
+        <div class="rounded-lg overflow-hidden aspect-[3/4]">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ0PVQbojYoM590kTH15oSZ8GcFil3ySGmyYOdRhCw8brH1V653lUHuao3Y&s=10"
+            alt="Local history talk"
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+        </div>
+        <h3 class="font-serif text-lg mt-4 group-hover:text-forest-600 transition-colors">Local History Talk</h3>
+        <p class="text-xs text-ink/45 mt-1">September 20</p>
+      </a>
+
+      <a href="#" class="reveal group block" style="animation-delay:.18s">
+        <div class="rounded-lg overflow-hidden aspect-[3/4]">
+          <img
+            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbDcazWpXAk9yqvKqupw92k7tQAcRT_FnL7m2Y__N5bmWA5c4Zu4r2DQ0_&s=10"
+            alt="Book repair workshop"
+            class="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105" />
+        </div>
+        <h3 class="font-serif text-lg mt-4 group-hover:text-forest-600 transition-colors">Author Meet</h3>
+        <p class="text-xs text-ink/45 mt-1">October 3</p>
+      </a>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="max-w-7xl mx-auto px-6 lg:px-10 pt-20 pb-10 border-t border-ink/10">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div>
+        <p class="font-serif text-2xl mb-3">Greenwood</p>
+        <p class="text-sm text-ink/50 leading-relaxed max-w-xs">A free public library serving Greenwood township since
+          1984.</p>
+        <div class="flex gap-3 mt-6">
+          <a href="#" aria-label="Instagram"
+            class="w-9 h-9 rounded-full border border-ink/15 flex items-center justify-center text-xs transition-colors duration-300 hover:bg-ink hover:text-paper">IG</a>
+          <a href="#" aria-label="Twitter"
+            class="w-9 h-9 rounded-full border border-ink/15 flex items-center justify-center text-xs transition-colors duration-300 hover:bg-ink hover:text-paper">TW</a>
+          <a href="#" aria-label="Facebook"
+            class="w-9 h-9 rounded-full border border-ink/15 flex items-center justify-center text-xs transition-colors duration-300 hover:bg-ink hover:text-paper">FB</a>
+        </div>
+      </div>
+
+      <div>
+        <p class="text-xs text-ink/40 mb-4">Pages</p>
+        <ul class="space-y-2 text-sm text-ink/60">
+          <li><a href="#sections" class="hover:text-ink transition-colors">Sections</a></li>
+          <li><a href="#gallery" class="hover:text-ink transition-colors">Gallery</a></li>
+          <li><a href="#membership" class="hover:text-ink transition-colors">Membership</a></li>
+          <li><a href="#events" class="hover:text-ink transition-colors">Events</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-xs text-ink/40 mb-4">Sections</p>
+        <ul class="space-y-2 text-sm text-ink/60">
+          <li><a href="#sections" class="hover:text-ink transition-colors">Fiction &amp; Literature</a></li>
+          <li><a href="#sections" class="hover:text-ink transition-colors">Children's Corner</a></li>
+          <li><a href="#sections" class="hover:text-ink transition-colors">Science &amp; Nature</a></li>
+          <li><a href="#sections" class="hover:text-ink transition-colors">Reference &amp; Study</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-xs text-ink/40 mb-4">Details</p>
+        <ul class="space-y-2 text-sm text-ink/60">
+          <li>118 Willow Street, Greenwood</li>
+          <li>hello@greenwoodlibrary.org</li>
+          <li>(555) 019‑2231</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="border-t border-ink/10 mt-14 pt-6 flex flex-col sm:flex-row justify-between gap-3 text-xs text-ink/40">
+      <p>&copy; 2026 Greenwood Public Library. All rights reserved.</p>
+      <div class="flex gap-5">
+        <a href="#" class="hover:text-ink/70 transition-colors">Privacy</a>
+        <a href="#" class="hover:text-ink/70 transition-colors">Terms</a>
+        <a href="#" class="hover:text-ink/70 transition-colors">Accessibility</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuBtn = document.getElementById('menuBtn');
+    const mobileMenu = document.getElementById('mobileMenu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
+  </script>
+
 </body>
+
 </html>

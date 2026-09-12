@@ -1,0 +1,50 @@
+import tailwindcss
+.reveal {
+      opacity: 0;
+    }
+
+    .reveal.in-view {
+      animation: fade-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    .nav-link {
+      position: relative;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: -3px;
+      height: 1px;
+      width: 0%;
+      background-color: currentColor;
+      transition: width 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+    }
+
+    ::selection {
+      background-color: #2E4131;
+      color: #FAF8F2;
+    }
+
+    html {
+      scrollbar-gutter: stable;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+
+      .reveal,
+      .reveal.in-view {
+        animation: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      * {
+        transition: none !important;
+      }
+    }
