@@ -1,0 +1,17 @@
+{
+  "name": "http-server",
+  "version": "1.0.0",
+  "description": "A basic web server built with Node.js's built-in http module (no frameworks)",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "node",
+    "http",
+    "server",
+    "beginner"
+  ],
+  "author": "",
+  "license": "ISC"
+}
