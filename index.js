@@ -1,57 +1,140 @@
-// This is a simple Express.js application that serves a to-do list.
+
 const express = require('express');
 
-// Create an instance of an Expression application
 const app = express();
-// Define the port on Which the server will listen
 const port = 3000;
 
-// Middleware to parse JSON bodies
-// This allows us to handle JSON data sent in requests
 app.use(express.json());
 
-// Sample to-do list data
-const toDoList = ["Karan", "SDE", "Google"];
+// Sample tasks with unique IDs
+let nextId = 4;
 
-// Define routes for the application
-// The root route server a simple message
+const toDoList = [
+    { id: 1, item: "Karan" },
+    { id: 2, item: "SDE" },
+    { id: 3, item: "Google" }
+];
+
+// GET: Home route
 app.get('/', (req, res) => {
     res.status(200).send('Hello World!');
 });
 
-// route to get the to-do list
-// This route responds with the current to-do list
+// GET: Retrieve all tasks
 app.get('/todos', (req, res) => {
-    res.status(200).send(toDoList);
+    res.status(200).json(toDoList);
 });
 
+// GET: Retrieve a single task by ID
+app.get('/todos/:id', (req, res) => {
+    const id = Number(req.params.id);
 
-// route to add a new item to the to-do list
-// it expects a JSON body with an item field 
+    const todo = toDoList.find(task => task.id === id);
+
+    if (!todo) {
+        return res.status(404).json({
+            message: "Task not found"
+        });
+    }
+
+    res.status(200).json(todo);
+});
+
+// POST: Add a new task
 app.post('/todos', (req, res) => {
-    let newTodo = req.body.item;
+    const { item } = req.body;
+
+    if (typeof item !== 'string' || !item.trim()) {
+        return res.status(400).json({
+            message: "A non-empty item is required"
+        });
+    }
+
+    const newTodo = {
+        id: nextId++,
+        item: item.trim()
+    };
+
     toDoList.push(newTodo);
 
-    res.status(201).send({
-        message: "Task added successfully!"
+    res.status(201).json({
+        message: "Task added successfully",
+        todo: newTodo
     });
 });
 
-// Route to delete an item from the to-do list
-// It expected a JSON body with an "item" field
-app.delete('/todos', (req, res) => {
-    const itemToDelete = req.body.item;
+// PUT: Replace/update a task by ID
+app.put('/todos/:id', (req, res) => {
+    const id = Number(req.params.id);
+    const { item } = req.body;
 
-    toDoList.find((elem, index) => {
-        if (itemToDelete === elem){
-            toDoList.splice(index,1)
-        }
-    })
-    res.status(204).send({
-        message:`Delete items ${req.body.item}`
-    })
-})
+    const todo = toDoList.find(task => task.id === id);
+
+    if (!todo) {
+        return res.status(404).json({
+            message: "Task not found"
+        });
+    }
+
+    if (typeof item !== 'string' || !item.trim()) {
+        return res.status(400).json({
+            message: "A non-empty item is required"
+        });
+    }
+
+    todo.item = item.trim();
+
+    res.status(200).json({
+        message: "Task updated successfully",
+        todo
+    });
+});
+
+// PATCH: Partially update a task by ID
+app.patch('/todos/:id', (req, res) => {
+    const id = Number(req.params.id);
+    const todo = toDoList.find(task => task.id === id);
+
+    if (!todo) {
+        return res.status(404).json({
+            message: "Task not found"
+        });
+    }
+
+    const { item } = req.body;
+
+    if (typeof item !== 'string' || !item.trim()) {
+        return res.status(400).json({
+            message: "A non-empty item is required"
+        });
+    }
+
+    todo.item = item.trim();
+
+    res.status(200).json({
+        message: "Task partially updated successfully",
+        todo
+    });
+});
+
+// DELETE: Remove a task by ID
+app.delete('/todos/:id', (req, res) => {
+    const id = Number(req.params.id);
+
+    const index = toDoList.findIndex(task => task.id === id);
+
+    if (index === -1) {
+        return res.status(404).json({
+            message: "Task not found"
+        });
+    }
+
+    toDoList.splice(index, 1);
+
+    // 204 responses must not contain a response body
+    res.status(204).end();
+});
 
 app.listen(port, () => {
-    console.log(`Example app listening at http://localhost:${port}`);
+    console.log(`Server running at http://localhost:${port}`);
 });
